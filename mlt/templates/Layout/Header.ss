@@ -2,6 +2,7 @@
 <div class="container divider">
 	<a class="brand" href="$BaseHref"><img src="{$ThemeDir}/images/logo.png" alt=" "></a>
 	<nav>
+	<a class="toggleNav"></a>
 	<ul class="nav">
 		<% loop $Menu(1) %>
 	        <li class="$ClassName<% if LinkOrSection = section %> active<% end_if %>">
@@ -9,13 +10,15 @@
 	                $MenuTitle.XML
 	            </a>
 
+            	<% if $LinkOrSection == section %>
 	                <% if $Children %>
 	                    <ul class="secondary" style="display: none;">
 	                        <% loop $Children %>
-	                            <li<% if LinkOrSection = section %> class="activeTab"<% end_if %>><a href="$Link">$Title</a></li>
+	                            <li<% if LinkOrSection = section %> class="activeTab"<% end_if %>><a href="$Link">$MenuTitle</a></li>
 	                        <% end_loop %>
 	                    </ul>
 	                <% end_if %>
+            	<% end_if %>
 	        </li>
 	    <% end_loop %>
 	</ul>
