@@ -1,39 +1,39 @@
 //hover effect script
 
 (function($){
-	$(document).ready(function(){
-	$("img.grey").hover(
-		function() {
-			$(this).stop().animate({"opacity": "0"}, "slow");
-	},
-	function() {
-		$(this).stop().animate({"opacity": "1"}, "slow");
-	});
-	});
+    $(document).ready(function(){
+    $("img.grey").hover(
+        function() {
+            $(this).stop().animate({"opacity": "0"}, "slow");
+    },
+    function() {
+        $(this).stop().animate({"opacity": "1"}, "slow");
+    });
+    });
 })(jQuery);
 
 function setBodyHeight(){ 
-	jQuery('body').css('minHeight', 'auto');
-	jQuery('.footer-wrapper').removeClass('bottom');
-	var windowHeight = jQuery(window).height();
-	var windowWidth = jQuery(window).width();
-	var margin = 0;
-	if(windowWidth <= 1024)
-		margin = 20;
-	var bodyHeight = jQuery('body').height();
-	if(bodyHeight < windowHeight){
-		windowHeight += BODY_MARGIN;
-		jQuery('body').css('minHeight',windowHeight - 69 + margin);
-		jQuery('.footer-wrapper').addClass('bottom');
-	}
-	var containerW = jQuery(".container").width();
-	var bodyWidth = jQuery("body").width();
-	var width = containerW;
-	if(bodyWidth > containerW)
-		width = bodyWidth;
-	if(windowWidth <= 1024)
-		width = '100%';
-	jQuery(".footer-wrapper").width(width);
+    jQuery('body').css('minHeight', 'auto');
+    jQuery('.footer-wrapper').removeClass('bottom');
+    var windowHeight = jQuery(window).height();
+    var windowWidth = jQuery(window).width();
+    var margin = 0;
+    if(windowWidth <= 1024)
+        margin = 20;
+    var bodyHeight = jQuery('body').height();
+    if(bodyHeight < windowHeight){
+        windowHeight += BODY_MARGIN;
+        jQuery('body').css('minHeight',windowHeight - 69 + margin);
+        jQuery('.footer-wrapper').addClass('bottom');
+    }
+    var containerW = jQuery(".container").width();
+    var bodyWidth = jQuery("body").width();
+    var width = containerW;
+    if(bodyWidth > containerW)
+        width = bodyWidth;
+    if(windowWidth <= 1024)
+        width = '100%';
+    jQuery(".footer-wrapper").width(width);
 }
 
 /*
@@ -50,39 +50,70 @@ $(function () {
     //SyntaxHighlighter.all();
 });
 $(window).load(function () {
-	var slideshowSpeedINT = 7000;
-	if(document.getElementById("sliderStartStop"))
-		slideshowSpeedINT = 3000;
-	
+    var slideshowSpeedINT = 7000;
+    if(document.getElementById("sliderStartStop"))
+        slideshowSpeedINT = 3000;
+    
     var slider = $('.flexslider').flexslider({
-    	animation: "slide",
-		slideshowSpeed: slideshowSpeedINT,
-    	start: function (slider) {
-        	$('body').removeClass('loading');
-			setBodyHeight();
-    	},
-		startAt: SlideStart
-	});
-	
-	if(document.getElementById("sliderStartStop")){
-		
-		var caption = $("#gallery-first-image").attr("caption");
-		$("#slide-caption").html(caption);
-		
-		$slider = $('.flexslider').data('flexslider');
-		$slider.pause();
-		$("#sliderStartStop").toggle(function(){
-			$slider = $('.flexslider').data('flexslider'); 
-			$slider.flexAnimate($slider.getTarget("next"), true);
-			$slider.play();
-			$("#slideShowText").html("stop");
-			return false;
-		}, function(){
-			$('.flexslider').data('flexslider').pause();
-			$("#slideShowText").html("slideshow");
-			return false;
-		});
-	}
+        animation: "slide",
+        slideshowSpeed: slideshowSpeedINT,
+        start: function (slider) {
+            $('body').removeClass('loading');
+            setBodyHeight();
+
+            var $new_height = slider.slides.eq(0).height();
+                
+            /* add a current class to the active item */
+            slider.slides.removeClass('current');
+            slider.slides.eq(0).addClass('current');
+                
+            slider.container.height($new_height);
+        },          
+        before: function(slider){ // init the height of the next item before slide
+            var $animatingTo = slider.slides.eq(slider.animatingTo);
+            var $new_height = slider.slides.eq(slider.animatingTo).height();                
+            
+            /* add a current class to the active item */
+            slider.slides.removeClass('current');
+            $animatingTo.addClass('current');
+            
+            if($new_height != slider.container.height()){
+                slider.container.stop().animate({ height: $new_height  }, 250);
+            }
+        },   
+        startAt: SlideStart
+    });
+    
+    if(document.getElementById("sliderStartStop")){
+        
+        var caption = $("#gallery-first-image").attr("caption");
+        $("#slide-caption").html(caption);
+        
+        $slider = $('.flexslider').data('flexslider');
+        $slider.pause();
+        $("#sliderStartStop").toggle(function(){
+            $slider = $('.flexslider').data('flexslider'); 
+            $slider.flexAnimate($slider.getTarget("next"), true);
+            $slider.play();
+            $("#slideShowText").html("stop");
+            return false;
+        }, function(){
+            $('.flexslider').data('flexslider').pause();
+            $("#slideShowText").html("slideshow");
+            return false;
+        });
+    }
+
+    $(window).resize(function() {   
+        clearTimeout(this.id);
+        this.id = setTimeout(doResizeSlide, 500);           
+    })
+        
+    function doResizeSlide() {
+        var slider = jQuery('.flexslider ul.slides');
+        var newHeight = jQuery('li.current', slider).height();          
+        slider.stop().animate({ height: newHeight });   
+    }
 });
 
 ;
@@ -300,10 +331,10 @@ $(window).load(function () {
                     slider.controlNav = $('.' + namespace + 'control-nav li ' + selector, (slider.controlsContainer) ? slider.controlsContainer : slider);
                 },
                 active: function () {
-					if(document.getElementById("slide-caption")){
-						var title = slider.slides.eq(slider.animatingTo).attr("caption");
-						$("#slide-caption").html(title);
-					}
+                    if(document.getElementById("slide-caption")){
+                        var title = slider.slides.eq(slider.animatingTo).attr("caption");
+                        $("#slide-caption").html(title);
+                    }
                     slider.controlNav.removeClass(namespace + "active").eq(slider.animatingTo).addClass(namespace + "active");
                 },
                 update: function (action, pos) {
@@ -1389,8 +1420,8 @@ function (a, b, c) {
 
 
 (function($){
-	$(window).load(setBodyHeight);
-	$(window).resize(setBodyHeight);
+    $(window).load(setBodyHeight);
+    $(window).resize(setBodyHeight);
 
 
 
