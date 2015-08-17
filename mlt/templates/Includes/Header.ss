@@ -21,6 +21,11 @@
             	<% end_if %>
 	        </li>
 	    <% end_loop %>
+
+
+	    <li class="blogLink">
+	       <a href="{$BlogLink}" class="link">Blog</a>
+		</li>
 	</ul>
 	</nav>
 	<% if BlogLink %>
