@@ -1,4 +1,4 @@
-<section class="slider-wrapper">
+<section class="slider-wrapper home-slider-wrapper">
 	<div class="flexslider">
 		<ul class="slides">
 			<% loop Slides %>
