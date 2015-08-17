@@ -1,0 +1,21 @@
+@font-face {
+    font-family: 'DINCond-Bold';
+    src: url('../fonts/dicnbd.eot');
+    src: url('../fonts/dicnbd.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/dicnbd.woff') format('woff'),
+         url('../fonts/dicnbd.ttf') format('truetype'),
+         url('../fonts/dicnbd.svg#dicnbd') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'DINCond-Medium';
+    src: url('../fonts/dicnmd.eot');
+    src: url('../fonts/dicnmd.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/dicnmd.woff') format('woff'),
+         url('../fonts/dicnmd.ttf') format('truetype'),
+         url('../fonts/dicnmd.svg#dicnmd') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
