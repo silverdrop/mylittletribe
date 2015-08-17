@@ -14,27 +14,24 @@
 </section>
 <!-- end slider-wrapper -->
 <section class="tagline-wrap cam clearfix">
-	<article class="tagline">$Intro<span><img src="{$ThemeDir}/images/camara.png" alt=" "></span></article>
+	<article class="tagline"><span><img src="{$ThemeDir}/images/camara.png" alt=" "></span>$Intro</article>
 	<!-- end tagline -->
 </section>
 <!-- end tagline-wrap -->
 <section class="photgraphy-testimonial-wrap clearfix">
-	<div class="titleRow">
+	<article>
 		<h2>$AboutTitle</h2>
-		<h2 class="last">$TestimonialTitle</h2>
-	</div>
-	<div class="contentRow">
-		<article class="span6">
+		<div class="content">
 			$AboutContent
 			<a href="$AboutPageLink" class="readmore"><span><img src="{$ThemeDir}/images/arrow.png" alt=" "></span>$AboutLinkText</a>
-		</article>
-		<!-- end span6 -->
-		<article class="span6 last">
-
+		</div>
+	</article>
+	<article class="last">
+		<h2>$TestimonialTitle</h2>
+		<div class="content">
 			$TestimonialContent
 			<a href="$TestimonialLink" class="readmore"><span><img src="{$ThemeDir}/images/arrow.png" alt=" "></span>$TestimonialLinkText</a></article>
-		</article>
-		<!-- end span6 -->
-	</div>
+		</div>
+	</article>
 </section>
 <!-- end photgraphy-testimonial-wrap -->
