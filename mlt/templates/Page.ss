@@ -19,9 +19,9 @@
 			<% include Header %>
 			$Layout
 		</div>
-		<% include Footer %>
 		<% include MailChimp %>
 	</div>
+	<% include Footer %>
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
