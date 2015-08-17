@@ -3,11 +3,11 @@
     <article class="leftcol">
       <div class="border-1"></div>
     </article>
-    <article class="rightcol"> <span class="span14">
+    <article class="rightcol"> <div class="row"><div class="half">
       $Content
-      </span> <span class="span13 last">
+      </div> <div class="half last">
       $RightSideContent
-      </span>
+      </div></div>
       <div class="divider-2"></div>
       <!-- end divider-2 -->
       
