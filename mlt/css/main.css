@@ -652,8 +652,12 @@ body article .comment-area h3 { font-size:30px; }
 }
 
 
+html, body {
+	overflow-x: hidden;
+	width: 100%;
+}
 .pageWrapper {
-	min-width: auto;
+	min-width: initial;
 	padding: 0 32px;
 }
 .container {
@@ -1175,6 +1179,10 @@ nav .toggleNav::after {
 		margin-bottom: 30px;
 	}
 
+	.footer {
+		width: 100%;
+		box-sizing: border-box;
+	}
 	.footer span {
 		font-size: 16px;
 	}

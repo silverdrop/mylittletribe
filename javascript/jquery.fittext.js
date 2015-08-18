@@ -84,7 +84,6 @@
 				count++;
 				start+= 0.02;
 				$("#fittext1").fitText(start);
-				console.log($("#fittext1").css("fontSize"));
 				currentWidth = span.width();
 			}
 		}else{
@@ -92,7 +91,6 @@
 				count++;
 				start-= 0.02;
 				$("#fittext1").fitText(start);
-				console.log($("#fittext1").css("fontSize"));
 				currentWidth = span.width();
 			}
 		}
